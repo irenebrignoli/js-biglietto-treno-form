@@ -14,32 +14,48 @@
 
 
   <form>
+
+    <label for="nome">Nome Cognome</label>
+    <input id="nome" type="text">
+
+    <label for="distanza">Km da percorrere</label>
     <input id="distanza" type="text">
 
+    <label for="eta">Fascia d'età</label>
     <input id="eta" type="text">
 
-    <button id="leggi-form">Leggi i valori del form</button>
   </form>
+  
+  <button id="leggi-form">Leggi i valori del form</button>
+  <button id="reset-form">Reset</button>
 
+
+  <div id="biglietto" class="d-none flex">
+
+    <div id="risultato-nome" class="box-white"></div>
+
+    <div id="risultato-offerta" class="box-white"></div>
+
+    <div id="risultato-carrozza" class="box-white"></div>
+
+    <div id="risultato-codice" class="box-white"></div>
+
+    <div id="risultato-prezzo" class="box-white"></div>
+
+
+  </div>
+
+ 
+  <!-- <select id="eta-select">
+    <option value="Minorenne">Minorenne</option>
+    <option value="Maggiorenne">Maggiorenne</option>
+    <option value="Old">Old</option>
+  </select> -->
 
   
-  
 
+ 
 
-
-  <!-- <input type="text">
-
-  <input type="text">
-
-  <select name="age" id="select-age">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select>
-
-  <input type="button">
-   -->
 
   <!-- script js -->
   <script type="text/javascript" src="js/main.js"></script>

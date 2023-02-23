@@ -1,90 +1,101 @@
-/*
-
-Descrizione:
-Scrivere un programma che chieda all’utente:
-- Il numero di chilometri da percorrere
-- Età del passeggero
-Sulla base di queste informazioni dovrà calcolare il prezzo totale del biglietto di viaggio, secondo le seguenti regole:
-- il prezzo del biglietto è definito in base ai km (0.21 € al km)
-- va applicato uno sconto del 20% per i minorenni
-- va applicato uno sconto del 40% per gli over 65.
-MILESTONE 1:
-Iniziamo implementando il programma senza alcuna estetica: usando esclusivamente due input e un bottone (non stilizzati), realizziamo le specifiche scritte sopra. La risposta finale (o output) sarà anch’essa da scrivere in console.
-MILESTONE 2:
-Solo una volta che il milestone 1 sarà completo e funzionante allora realizzeremo un form in pagina in cui l’utente potrà inserire i dati e visualizzare il calcolo finale con il prezzo.
-Il recap dei dati e l’output del prezzo finale, andranno quindi stampati in pagina (il prezzo dovrà essere formattato con massimo due decimali, per indicare i centesimi sul prezzo). Questo richiederà un minimo di ricerca.
-Nota:
-Se non vi sentite particolarmente creativi, questa potrebbe essere un’implementazione da seguire per il secondo milestone. Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra.
-
-*/
 
 
 const distanzaDom = document.getElementById('distanza');
-const distanzaInserita = distanzaDom.value;
 
 const etaDom = document.getElementById('eta');
-const etaInserita = etaDom.value;
 
-const buttonDom = document.querySelector('#leggi-form');
+const buttonDom = document.getElementById('leggi-form');
+
+const risultatoNome = document.getElementById('risultato-nome');
+
+const risultatoOfferta = document.getElementById('risultato-offerta');
+
+const risultatoCarrozza = document.getElementById('risultato-carrozza');
+
+const risultatoCodice = document.getElementById('risultato-codice');
+
+const risultatoPrezzo = document.getElementById('risultato-prezzo');
+
+let prezzoAlKm = 0.21;
+
+const biglietto = document.getElementById('biglietto');
+
+
+//button avvio
 
 buttonDom.addEventListener('click', 
   function () {
 
+    //form
+
+    risultatoNome.innerHTML = risultatoNome.value;
+    console.log('Il nome è ' + risultatoNome.value);
+
+    const distanzaInserita = parseInt(distanzaDom.value);
     console.log('Distanza inserita ' + distanzaInserita);
   
+    const etaInserita = parseInt(etaDom.value);
     console.log('Età inserita ' + etaInserita);
+
+    //biglietto
+
+    const bigliettoOpen = document.getElementById('biglietto');
+    bigliettoOpen.classList.remove('d-none');
+
+    let prezzoBiglietto = prezzoAlKm * distanzaInserita;
+    console.log('Prezzo biglietto normale: ' + prezzoBiglietto);
+
+    let scontoGiovani = (prezzoBiglietto / 100) * 20;
+    console.log('Sconto giovani: ' + scontoGiovani);
+
+    let scontoAnziani = (prezzoBiglietto / 100) * 40;
+    console.log('Sconto anziani: ' + scontoAnziani);
+
+    if (etaInserita < 18) {
+
+      const prezzoGiovani = prezzoBiglietto -= scontoGiovani;
+      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoGiovani.toFixed(2)} <br/> Biglietto Young`;
+      risultatoPrezzo.innerHTML = prezzoGiovani.toFixed(2);
+    
+    } else if (etaInserita > 65){
+    
+      const prezzoAnziani = prezzoBiglietto -= scontoAnziani;
+      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoAnziani.toFixed(2)} <br/> Biglietto Old` ;
+      risultatoPrezzo.innerHTML = prezzoAnziani.toFixed(2);
+    
+    } else {
+    
+      risultatoOfferta.innerHTML = `Biglietto Standard`;
+      risultatoPrezzo.innerHTML = prezzoBiglietto.toFixed(2);
+    }
+
+    const risultatoCarrozzaNew = Math.floor (Math.random() * 9) + 1;
+    risultatoCarrozza.innerHTML = risultatoCarrozzaNew;
+
+    const risultatoCodiceNew = Math.floor (Math.random() * 99999);
+    risultatoCodice.innerHTML = risultatoCodiceNew;
   }
+
+  
 );
 
 
-/*
-
-const distance = parseInt(prompt('Inserisci la distanza che vuoi percorrere (km)'));
-console.log('Distanza: ' + distanza);
-
-const eta = parseInt(prompt('Inserisci la tua età'));
-console.log('Età: ' + eta);
-
-let prezzoAlKm = 0.21;
-
-let prezzoBigliettoBase = prezzoAlKm * distanza;
-prezzoBigliettoBase = prezzoBigliettoBase.toFixed(2);
-console.log('Prezzo biglietto normale: ' + prezzoBigliettoBase);
-
-let scontoGiovani = (prezzoBigliettoBase / 100) * 20;
-console.log('Sconto giovani: ' + scontoGiovani);
-
-let scontoAnziani = (prezzoBigliettoBase / 100) * 40;
-console.log('Sconto anziani: ' + scontoAnziani);
-
-let bigliettoGiovani = prezzoBigliettoBase - scontoGiovani;
-bigliettoGiovani = bigliettoGiovani.toFixed(2);
-
-let bigliettoAnziani = prezzoBigliettoBase - scontoAnziani;
-bigliettoAnziani = bigliettoAnziani.toFixed(2);
+//button reset
 
 
-if (eta < 18) {
-  document.getElementById('prezzo-viaggio').innerHTML = 'Il prezzo è di € ' + bigliettoGiovani + '<p>Hai uno sconto del 20% perché sei minorenne!</p>';
-  
-} else if (eta > 65) {
-  document.getElementById('prezzo-viaggio').innerHTML = 'Il prezzo è di € ' + bigliettoAnziani + '<p>Hai uno sconto del 40% perché sei over 65!</p>';
+const resetdom = document.getElementById('reset-form');
 
-} else {
-  document.getElementById('prezzo-viaggio').innerHTML = 'Il prezzo è di € ' + prezzoBigliettoBase;
- 
-}
+resetdom.addEventListener('click', 
+    function() {
 
-*/
+        distanzaDom.value = "";
+        etaDom.value ="";
+
+        const bigliettoOpen = document.getElementById('biglietto');
+        bigliettoOpen.classList.add('d-none');
+
+    }
+);
 
 
 
-/*
-if (eta < 18) {
-  risultato = prezzoBigliettoBase - scontoGiovani;
-} else if (eta > 65) {
-  risultato = prezzoBigliettoBase - scontoAnziani;
-} else {
-  risultato = prezzoBigliettoBase;
-}
-*/
