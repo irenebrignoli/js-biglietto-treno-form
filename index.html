@@ -8,42 +8,79 @@
   <!-- css -->
   <link rel="stylesheet" href="css/style.css">
 
-  <title>Document</title>
+  <title>Train ticket</title>
 </head>
 <body>
 
+  <div class="container">
 
-  <form>
+    <h1 class="mb-20">Calcola il prezzo del tuo biglietto</h1>
 
-    <label for="nome">Nome Cognome</label>
-    <input id="nome" type="text">
-
-    <label for="distanza">Km da percorrere</label>
-    <input id="distanza" type="text">
-
-    <label for="eta">Fascia d'età</label>
-    <input id="eta" type="text">
-
-  </form>
+    <form class="flex justify-ceter mb-20">
   
-  <button id="leggi-form">Leggi i valori del form</button>
-  <button id="reset-form">Reset</button>
+      <div>
+        <label for="nome">Nome Cognome</label>
+        <input id="nome" type="text">
+      </div>
+      
+      <div>
+        <label for="distanza">Km da percorrere</label>
+        <input id="distanza" type="text">
+      </div>
 
+      <div>
+        <label for="eta">Anni</label>
+        <input id="eta" type="text">
+      </div>
+    
+    </form>
+    
+    <div class="buttons mb-20">
+      <button id="leggi-form" class="btn">Genera</button>
+      <button id="reset-form" class="btn">Annulla</button>
+    </div>
+    
+  
+    <h1 class="mb-20">Il tuo biglietto</h1>
+  
+    <div id="biglietto" class="d-none">
 
-  <div id="biglietto" class="d-none flex">
+      <h2 class="mb-10">Biglietto: dettagli</h2>
+  
+      <div class="dettagli flex">
 
-    <div id="risultato-nome" class="box-white"></div>
+        <div class="box-white">
+          <h3>Nome passeggero</h3>
+          <div id="risultato-nome" class="mt-10"></div>
+        </div>
+        
+        <div class="box-white">
+          <h3>Offerta</h3>
+          <div id="risultato-offerta" class="mt-10"></div>
+        </div>
 
-    <div id="risultato-offerta" class="box-white"></div>
+        <div class="box-white">
+          <h3>Carrozza</h3>
+          <div id="risultato-carrozza" class="mt-10"></div>
+        </div>
 
-    <div id="risultato-carrozza" class="box-white"></div>
+        <div class="box-white">
+          <h3>Codice CP</h3>
+          <div id="risultato-codice" class="mt-10"></div>
+        </div>
 
-    <div id="risultato-codice" class="box-white"></div>
+        <div class="box-white">
+          <h3>Costo biglietto</h3>
+          <div id="risultato-prezzo" class="mt-10"></div>
+        </div>
 
-    <div id="risultato-prezzo" class="box-white"></div>
+      </div>
+      
 
+    </div>
 
   </div>
+ 
 
  
   <!-- <select id="eta-select">

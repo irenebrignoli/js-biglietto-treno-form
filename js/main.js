@@ -1,5 +1,7 @@
 
 
+
+
 const distanzaDom = document.getElementById('distanza');
 
 const etaDom = document.getElementById('eta');
@@ -54,19 +56,19 @@ buttonDom.addEventListener('click',
     if (etaInserita < 18) {
 
       const prezzoGiovani = prezzoBiglietto -= scontoGiovani;
-      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoGiovani.toFixed(2)} <br/> Biglietto Young`;
-      risultatoPrezzo.innerHTML = prezzoGiovani.toFixed(2);
+      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoGiovani.toFixed(2)}€ <br/> Biglietto Young`;
+      risultatoPrezzo.innerHTML = prezzoGiovani.toFixed(2) + '€';
     
     } else if (etaInserita > 65){
     
       const prezzoAnziani = prezzoBiglietto -= scontoAnziani;
-      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoAnziani.toFixed(2)} <br/> Biglietto Old` ;
-      risultatoPrezzo.innerHTML = prezzoAnziani.toFixed(2);
+      risultatoOfferta.innerHTML = `Hai diritto a uno sconto di: ${scontoAnziani.toFixed(2)}€ <br/> Biglietto Old` ;
+      risultatoPrezzo.innerHTML = prezzoAnziani.toFixed(2)  + '€';
     
     } else {
     
       risultatoOfferta.innerHTML = `Biglietto Standard`;
-      risultatoPrezzo.innerHTML = prezzoBiglietto.toFixed(2);
+      risultatoPrezzo.innerHTML = prezzoBiglietto.toFixed(2)  + '€';
     }
 
     const risultatoCarrozzaNew = Math.floor (Math.random() * 9) + 1;
